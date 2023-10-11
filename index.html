@@ -1,125 +1,206 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <style>
-    /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
-    .row.content {height: 1500px}
-    
-    /* Set gray background color and 100% height */
-    .sidenav {
-      background-color: #f1f1f1;
-      height: 100%;
-    }
-    
-    /* Set black background color, white text and some padding */
-    footer {
-      background-color: #555;
-      color: white;
-      padding: 15px;
-    }
-    
-    /* On small screens, set height to 'auto' for sidenav and grid */
-    @media screen and (max-width: 767px) {
-      .sidenav {
-        height: auto;
-        padding: 15px;
-      }
-      .row.content {height: auto;} 
-    }
-  </style>
+    <link rel="stylesheet" type="text/css" href="my.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        [class*="col-"] {
+            float: left;
+            padding: 15px;
+        }
+
+        html {
+            font-family: "Lucida Sans", sans-serif;
+        }
+
+        .header {
+            background-color: #d496f3;
+            color: #ffffff;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            margin: 10px;
+            position: relative;
+        }
+
+        .view-button, .edit-button {
+            position: absolute;
+            bottom: 10px;
+            background-color: #0099cc;
+            color: #ffffff;
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .view-button:hover, .edit-button:hover {
+            background-color: #0077aa;
+        }
+
+        .view-button {
+            right: 10px;
+        }
+
+        .edit-button {
+            right: 70px;
+        }
+
+        .menu ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu li {
+            padding: 8px;
+            margin-bottom: 7px;
+            background-color: #86d6f3;
+            color: #ffffff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+        }
+
+        .menu li:hover {
+            background-color: #0099cc;
+        }
+
+        .aside {
+            background-color: #86d6f3;
+            padding: 15px;
+            color: #ffffff;
+            text-align: center;
+            font-size: 14px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+        }
+
+        .footer {
+            background-color: #0099cc;
+            color: #ffffff;
+            text-align: center;
+            font-size: 12px;
+            padding: 15px;
+        }
+
+        /* For mobile phones: */
+        [class*="col-"] {
+            width: 100%;
+        }
+
+        @media only screen and (min-width: 600px) {
+            .col-s-1 {width: 8.33%;}
+            .col-s-2 {width: 16.66%;}
+            .col-s-3 {width: 25%;}
+            .col-s-4 {width: 33.33%;}
+            .col-s-5 {width: 41.66%;}
+            .col-s-6 {width: 50%;}
+            .col-s-7 {width: 58.33%;}
+            .col-s-8 {width: 66.66%;}
+            .col-s-9 {width: 75%;}
+            .col-s-10 {width: 83.33%;}
+            .col-s-11 {width: 91.66%;}
+            .col-s-12 {width: 100%;}
+        }
+
+        @media only screen and (min-width: 768px) {
+            .col-1 {width: 8.33%;}
+            .col-2 {width: 16.66%;}
+            .col-3 {width: 25%;}
+            .col-4 {width: 33.33%;}
+            .col-5 {width: 41.66%;}
+            .col-6 {width: 50%;}
+            .col-7 {width: 58.33%;}
+            .col-8 {width: 66.66%;}
+            .col-9 {width: 75%;}
+            .col-10 {width: 83.33%;}
+            .col-11 {width: 91.66%;}
+            .col-12 {width: 100%;}
+        }
+    </style>
 </head>
 <body>
 
-<div class="container-fluid">
-  <div class="row content">
-    <div class="col-sm-3 sidenav">
-      <h4>John's Blog</h4>
-      <ul class="nav nav-pills nav-stacked">
-        <li class="active"><a href="#section1">Home</a></li>
-        <li><a href="#section2">Friends</a></li>
-        <li><a href="#section3">Family</a></li>
-        <li><a href="#section3">Photos</a></li>
-      </ul><br>
-      <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search Blog..">
-        <span class="input-group-btn">
-          <button class="btn btn-default" type="button">
-            <span class="glyphicon glyphicon-search"></span>
-          </button>
-        </span>
-      </div>
+<div class="header">
+  <h1>전화 기록부</h1>
+</div>
+
+<div class="row">
+  <div class="col-3 col-s-3 menu">
+    <ul>
+      <li><a href="add.html" class="add-button">항목 더하기!!(ADD)</a></li>
+      <li>전화번호 편집(미작동)</li>
+      <li>전화번호 검색(미작동)</li>
+    </ul>
+  </div>
+
+  <div class="col-6 col-s-9">
+    <div class="card">
+      <h2>전화번호 1</h2>
+      <p>이름: 김태민</p>
+      <p>이메일: minmin@gmail.com</p>
+      <p>전화번호: 123-456-7890</p>
+      <p>주소: 서울시 강남구</p>
+      <button class="view-button" onclick="goToViewPage()">View</button>
+      <button class="edit-button" onclick="goToEditPage()">Edit</button>
     </div>
-
-    <div class="col-sm-9">
-      <h4><small>RECENT POSTS</small></h4>
-      <hr>
-      <h2>I Love Food</h2>
-      <h5><span class="glyphicon glyphicon-time"></span> Post by Jane Dane, Sep 27, 2015.</h5>
-      <h5><span class="label label-danger">Food</span> <span class="label label-primary">Ipsum</span></h5><br>
-      <p>Food is my passion. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      <br><br>
-      
-      <h4><small>RECENT POSTS</small></h4>
-      <hr>
-      <h2>Officially Blogging</h2>
-      <h5><span class="glyphicon glyphicon-time"></span> Post by John Doe, Sep 24, 2015.</h5>
-      <h5><span class="label label-success">Lorem</span></h5><br>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      <hr>
-
-      <h4>Leave a Comment:</h4>
-      <form role="form">
-        <div class="form-group">
-          <textarea class="form-control" rows="3" required></textarea>
-        </div>
-        <button type="submit" class="btn btn-success">Submit</button>
-      </form>
-      <br><br>
-      
-      <p><span class="badge">2</span> Comments:</p><br>
-      
-      <div class="row">
-        <div class="col-sm-2 text-center">
-          <img src="bandmember.jpg" class="img-circle" height="65" width="65" alt="Avatar">
-        </div>
-        <div class="col-sm-10">
-          <h4>Anja <small>Sep 29, 2015, 9:12 PM</small></h4>
-          <p>Keep up the GREAT work! I am cheering for you!! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          <br>
-        </div>
-        <div class="col-sm-2 text-center">
-          <img src="bird.jpg" class="img-circle" height="65" width="65" alt="Avatar">
-        </div>
-        <div class="col-sm-10">
-          <h4>John Row <small>Sep 25, 2015, 8:25 PM</small></h4>
-          <p>I am so happy for you man! Finally. I am looking forward to read about your trendy life. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          <br>
-          <p><span class="badge">1</span> Comment:</p><br>
-          <div class="row">
-            <div class="col-sm-2 text-center">
-              <img src="bird.jpg" class="img-circle" height="65" width="65" alt="Avatar">
-            </div>
-            <div class="col-xs-10">
-              <h4>Nested Bro <small>Sep 25, 2015, 8:28 PM</small></h4>
-              <p>Me too! WOW!</p>
-              <br>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="card">
+      <h2>전화번호 2</h2>
+      <p>이름: 김지민</p>
+      <p>이메일: potato@gmail.com</p>
+      <p>전화번호: 987-654-3210</p>
+      <p>주소: 서울시 종로구</p>
+      <button class="view-button" onclick="goToViewPage()">View</button>
+      <button class="edit-button" onclick="goToEditPage()">Edit</button>
+    </div>
+    <div class="card">
+      <h2>전화번호 3</h2>
+      <p>이름: 유평강</p>
+      <p>이메일: peacelove@handong.ac.kr</p>
+      <p>전화번호: 555-555-5555</p>
+      <p>주소: 부산시 해운대구</p>
+      <button class="view-button" onclick="goToViewPage()">View</button>
+      <button class="edit-button" onclick="goToEditPage()">Edit</button>
+    </div>
+    <div class="card">
+      <h2>전화번호 4</h2>
+      <p>이름: 이다석</p>
+      <p>이메일: 555-555-5555</p>
+      <p>전화번호: dasick@gmail.com</p>
+      <p>주소: 충청북도 천안</p>
+      <button class="view-button" onclick="goToViewPage()">View</button>
+      <button class="edit-button" onclick="goToEditPage()">Edit</button>
     </div>
   </div>
 </div>
 
-<footer class="container-fluid">
-  <p>Footer Text</p>
-</footer>
+<div class="footer">
+  <p>새 친구를 사겨보자</p>
+</div>
 
+<script>
+    // 모든 View 버튼을 클릭하면 view.html로 이동
+    function goToViewPage() {
+        window.location.href = "view.html";
+    }
+    
+    // 모든 Edit 버튼을 클릭하면 edit.html로 이동
+    function goToEditPage() {
+        window.location.href = "edit.html";
+    }
+</script>
 </body>
 </html>

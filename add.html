@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="my.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: #4a5bf2;
+        }
+
+        body, h1, h2, p, label, input, button {
+            color: #000000;
+        }
+        h1 {
+            background-color: #c6f690;
+            display: inline-block;
+            padding: 10px;
+            border: 1px solid #000;
+            color: #000000;
+        }
+        .add-button {
+            background-color: #0099cc;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .add-button:hover {
+            background-color: #0077aa;
+        }
+        .error-message {
+            background-color: #ffcccc;
+            color: red;
+            padding: 5px;
+            border: 1px solid red;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>전화 기록부</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-6 col-s-9">
+            <div class="card">
+                <h2>새로운 카드 추가</h2>
+                <form id="addCardForm">
+                    <label for="name">이름:</label>
+                    <input type="text" id="name" name="name" required><br><br>
+
+                    <label for="email">이메일:</label>
+                    <input type="text" id="email" name="email" required><br><br>
+
+                    <label for="phone">전화번호:</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="전화번호를 입력해주세요" autocomplete="off"><br>
+                    <div class="error-message" id="phone-error"></div>
+                    <br>
+
+                    <label for="address">주소:</label>
+                    <input type="text" id="address" name="address" required><br><br>
+
+                    <button class="add-button" type="button" onclick="addCard()">추가</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        
+    </div>
+
+    <script>
+        function addCard() {
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var phone = document.getElementById("phone").value;
+            var address = document.getElementById("address").value;
+
+            // 전화번호가 숫자인지 확인
+            var isNumeric = /^[0-9]+$/.test(phone);
+
+            if (!isNumeric) {
+                document.getElementById("phone-error").textContent = "전화번호는 숫자만 입력 가능합니다.";
+                return;
+            }
+            if (phone.length !== 10) {
+                document.getElementById("phone-error").textContent = "10자리로 입력해주세요.";
+                return;
+            } else {
+                document.getElementById("phone-error").textContent = "";
+            }
+
+            var newCard = document.createElement("div");
+            newCard.className = "card";
+            newCard.innerHTML = `
+                <h2>${name}</h2>
+                <p>이름: ${name}</p>
+                <p>이메일: ${email}</p>
+                <p>전화번호: ${phone}</p>
+                <p>주소: ${address}</p>
+                <button class="edit-button" onclick="redirectToEditPage()">Edit</button>
+            `;
+
+            var cardContainer = document.querySelector(".col-6.col-s-9");
+            cardContainer.appendChild(newCard);
+
+            document.getElementById("addCardForm").reset();
+
+            alert("게시물이 추가됩니다");
+        }
+
+        function redirectToEditPage() {
+            // Edit 버튼을 눌렀을 때 이동할 페이지의 경로를 지정하세요.
+            // 예: window.location.href = "edit.html";
+        }
+    </script>
+
+</body>
+</html>
